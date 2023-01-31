@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-blogapp-dev-131149-authRole",
+      "UnauthRoleArn": "arn:aws:iam::576751103427:role/amplify-blogapp-dev-131149-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::576751103427:role/amplify-blogapp-dev-131149-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-blogapp-dev-131149-deployment",
+      "UnauthRoleName": "amplify-blogapp-dev-131149-unauthRole",
+      "StackName": "amplify-blogapp-dev-131149",
+      "StackId": "arn:aws:cloudformation:us-east-1:576751103427:stack/amplify-blogapp-dev-131149/9179c260-a0c9-11ed-a65b-12e819490f2d",
+      "AmplifyAppId": "d3f46vstf1l16x"
+    },
+    "categories": {
+      "api": {
+        "blogapp": {}
+      },
+      "auth": {
+        "blogappa525597c": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "blogapp",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authblogappa525597c",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "S3DeploymentBucket": "amplify-blogapp-dev-131149-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/7fbf51a1f627fcb3f4c153b49df2246b69f42f34"
+}

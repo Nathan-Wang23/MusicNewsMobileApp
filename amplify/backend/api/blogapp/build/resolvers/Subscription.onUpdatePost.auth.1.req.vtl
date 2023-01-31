@@ -1,0 +1,31 @@
+## [Start] Authorization Steps. **
+$util.qr($ctx.stash.put("hasAuth", true))
+#set( $isAuthorized = false )
+#if( $util.authType() == "API Key Authorization" )
+
+#end
+#if( $util.authType() == "User Pool Authorization" )
+  #set( $authRuntimeFilter = [] )
+  #set( $authOwnerRuntimeFilter = [] )
+  #set( $authGroupRuntimeFilter = [] )
+  ## Apply dynamic roles auth if not previously authorized by static groups and owner argument **
+  #if( $authOwnerRuntimeFilter.size() > 0 )
+    $util.qr($authRuntimeFilter.addAll($authOwnerRuntimeFilter))
+  #end
+  #if( $authGroupRuntimeFilter.size() > 0 )
+    $util.qr($authRuntimeFilter.addAll($authGroupRuntimeFilter))
+  #end
+  #if( !$isAuthorized && $authRuntimeFilter.size() > 0 )
+    #if( $util.isNullOrEmpty($ctx.args.filter) )
+      #set( $ctx.args.filter = { "or": $authRuntimeFilter } )
+    #else
+      #set( $ctx.args.filter = { "and": [ { "or": $authRuntimeFilter }, $ctx.args.filter ]} )
+    #end
+    #set( $isAuthorized = true )
+  #end
+#end
+#if( !$isAuthorized )
+$util.unauthorized()
+#end
+$util.toJson({"version":"2018-05-29","payload":{}})
+## [End] Authorization Steps. **
